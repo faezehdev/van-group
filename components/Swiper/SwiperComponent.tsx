@@ -11,7 +11,7 @@ interface SwiperComponentProps {
 
 const SwiperComponent: React.FC<SwiperComponentProps> = ({ children, ...props }) => {
   return (
-    <Swiper {...props} dir='rtl' className='overflow-hidden pb-[3em]'>
+    <Swiper {...props} dir='rtl' className='overflow-hidden !pb-[3em]'>
       {children}
     </Swiper>
   );

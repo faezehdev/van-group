@@ -159,7 +159,7 @@ const Form = () => {
         <div className="Row w-full flex lg:flex-row flex-col gap-3.5 justify-between items-center">
           <MyCaptcha verified={state} setVerified={dispatch} />
           <Button
-            className="!w-full lg:w-max"
+            className="!w-full lg:!w-max"
             type="submit"
             title="ارسال"
           />

@@ -165,7 +165,8 @@ const Form = () => {
           />
         </div>
       </div>
-      {
+      { 
+      
         state.error && (
           <p className="text-red-500 flex w-[90%] mx-auto text-sm mt-1">
             لطفا ابتدا کپچا را انجام دهید

@@ -48,8 +48,8 @@ export default function ToggleLangs() {
             className={`language_toggle gap-2 flex flex-col w-max overflow-visible relative ${menuOpen ? 'rounded-t-xl' : 'rounded-xl'}`}
         >
             <div
-                className={`active_lang w-full bg-graylight border-b-[1px] group/activelang  hover:bg-[#5D5D5D] duration-200
-             hover:cursor-pointer px-6 !pl-[2.4em] py-1 flex gap-2.5 ${menuOpen ? 'rounded-t-xl border-b-[#E1E1E1]' : 'rounded-xl'}`}
+                className={`active_lang w-full bg-graylight  group/activelang  hover:bg-[#5D5D5D] duration-200
+             hover:cursor-pointer px-6 !pl-[2.4em] py-1 flex gap-2.5 ${menuOpen ? 'rounded-t-xl border-b-[1px] border-b-[#E1E1E1]' : 'rounded-xl'}`}
             >
                 <span className="lang font-normal group-hover/activelang:text-white duration-200 text-base text-black">
                     {activeLang?.short ?? 'فا'}

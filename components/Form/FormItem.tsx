@@ -1,5 +1,5 @@
 "use client";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import {
     FieldErrors,
     Path,
@@ -37,6 +37,18 @@ const FormItem = <T extends Record<string, any>>({
     focused,
     children,
 }: FormItemProps<T>) => {
+      const [showError, setShowError] = useState(false);
+
+    useEffect(() => {
+        if (errors[name]) {
+            setShowError(true);
+            const timer = setTimeout(() => {
+                setShowError(false);
+            }, 5000);
+
+            return () => clearTimeout(timer);
+        }
+    }, [errors, name]);
     return (
         <div className={`${as === "textarea" ? 'w-full justify-start':''} item  w-full flex flex-col relative`}>
             <label className="block font-normal text-sm mb-1">{title}</label>
@@ -118,7 +130,7 @@ const FormItem = <T extends Record<string, any>>({
                 {icon}
             </span>
 
-            {errors[name] && (
+            {showError && errors[name] && (
                 <p className="text-red-500 absolute bottom-[-2em] text-sm mt-1">
                     {(errors[name]?.message as string) || ""}
                 </p>

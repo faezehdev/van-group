@@ -26,7 +26,7 @@ const Cards:FC<cardPropType> = ({cardsData}) => {
     },
   };
   return (
-    <div className="Cards-container mt-5 overflow-hidden w-90 mx-auto max-w-[90%]">
+    <div className="Cards-container mt-5  w-90 mx-auto max-w-[90%]">
       <SwiperComponent spaceBetween={50} slidesPerView={3} breakpoints={breakpoints}>
         {cardsData.map((item, idx) => (
           <SwiperSlide key={idx}>          

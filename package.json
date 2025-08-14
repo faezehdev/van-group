@@ -9,9 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.7",
     "@types/react-google-recaptcha": "^2.1.9",
     "next": "15.4.6",
     "react": "^19.1.0",
+    "react-burger-menu": "^2.9.2",
     "react-dom": "^19.1.0",
     "react-google-recaptcha": "^3.1.0",
     "react-hook-form": "^7.62.0",
@@ -21,6 +23,7 @@
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19.1.9",
+    "@types/react-burger-menu": "^2.8.7",
     "@types/react-dom": "^19.1.7",
     "tailwindcss": "^4",
     "typescript": "^5"

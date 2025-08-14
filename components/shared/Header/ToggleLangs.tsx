@@ -45,13 +45,16 @@ export default function ToggleLangs() {
         <div
             ref={menuRef}
             onClick={toggleMenu}
-            className={`language_toggle gap-2 flex flex-col w-max overflow-visible relative ${menuOpen ? 'rounded-t-xl' : 'rounded-xl'}`}
+            className={`language_toggle gap-2 mb-[3em] sm:mb-[0] flex flex-col sm:w-max w-full  overflow-visible border-[1px]
+                 border-[#5D5D5D] sm:border-[transparent]
+                 relative ${menuOpen ? 'rounded-t-xl' : 'rounded-xl'}`}
         >
             <div
                 className={`active_lang w-full bg-graylight  group/activelang  hover:bg-[#5D5D5D] duration-200
-             hover:cursor-pointer px-6 !pl-[2.4em] py-1 flex gap-2.5 ${menuOpen ? 'rounded-t-xl border-b-[1px] border-b-[#E1E1E1]' : 'rounded-xl'}`}
+             hover:cursor-pointer sm:px-6 !pl-[2.4em] py-1 flex gap-2.5 justify-between
+              ${menuOpen ? 'rounded-t-xl border-b-[1px] border-b-[#E1E1E1]' : 'rounded-xl'}`}
             >
-                <span className="lang font-normal group-hover/activelang:text-white duration-200 text-base text-black">
+                <span className="lang font-normal pr-6 sm:p-0 group-hover/activelang:text-white duration-200 text-base text-black">
                     {activeLang?.short ?? 'فا'}
                 </span>
                 <div className="icons relative ">

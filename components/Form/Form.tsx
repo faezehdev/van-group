@@ -9,7 +9,7 @@ import EmailIcon from "../shared/icon/EmailIcon";
 import RequestIcon from "../shared/icon/RequestIcon";
 import MyCaptcha from "../Recaptcha/Recaptcha";
 import Button from "../shared/common/Button";
-import { formReducer,FormInitialState } from "./Reducer/FormReducer";
+import { formReducer, FormInitialState } from "./Reducer/FormReducer";
 type FormValues = {
   companyName: string;
   category: string;
@@ -20,19 +20,20 @@ type FormValues = {
 
 
 const Form = () => {
-  const { register, handleSubmit, formState: { errors },reset } = useForm<FormValues>();
+  const { register, handleSubmit, formState: { errors }, reset, watch, setValue } = useForm<FormValues>();
+
   const [focused, setFocused] = useState<{ [key in keyof FormValues]?: boolean }>({});
-   const [state, dispatch] = useReducer(formReducer,FormInitialState);;
+  const [state, dispatch] = useReducer(formReducer, FormInitialState);;
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    if(state.verified){
-  console.log(data);
-  dispatch({type:"SEND_PERMISION",payload:{verified:false,error: false}})
-   reset()
+    if (state.verified) {
+      console.log(data);
+      dispatch({ type: "SEND_PERMISION", payload: { verified: false, error: false } })
+      reset()
     }
-    else{
-      dispatch({type:"SEND_ERROR",payload:{error: true}})
+    else {
+      dispatch({ type: "SEND_ERROR", payload: { error: true } })
     }
-  
+
   };
 
   return (
@@ -61,7 +62,7 @@ const Form = () => {
               )
             }
           />
-          <FormItem<FormValues>
+          {/* <FormItem<FormValues>
             name="category"
             title="دسته‌بندی"
             register={register}
@@ -77,7 +78,25 @@ const Form = () => {
             <option value="IT">فناوری اطلاعات</option>
             <option value="Finance">مالی</option>
             <option value="Marketing">بازاریابی</option>
-          </FormItem>
+          </FormItem> */}
+          <FormItem
+            name="category"
+            title="دسته‌بندی"
+            placeholder="انتخاب کنید"
+            as="custom-select"
+            icon={focused["category"] ? <SelectIcon width={18} height={18} fill="black" /> : <SelectIcon width={18} height={18} fill="#9F9F9F" />}
+            setFocused={(value) => setFocused(prev => ({ ...prev, category: value }))}
+            errors={errors}
+            focused={!!focused["category"]}
+            register={register}
+            value={watch("category")}
+            onChangeCustomSelect={(val) => setValue("category", val)}
+            options={[
+              { label: "فناوری اطلاعات", value: "IT" },
+              { label: "مالی", value: "Finance" },
+              { label: "بازاریابی", value: "Marketing" },
+            ]}
+          />
 
         </div>
         <div className="row w-full flex lg:flex-row flex-col gap-6 justify-between">
@@ -119,7 +138,7 @@ const Form = () => {
           />
         </div>
         <div className="textArea w-full">
-              <FormItem<FormValues>
+          <FormItem<FormValues>
             name="request"
             title="درخواست: "
             placeholder="درخواست: "
@@ -127,7 +146,7 @@ const Form = () => {
             errors={errors}
             focused={!!focused["request"]}
             setFocused={(value) => setFocused(prev => ({ ...prev, request: value }))}
-             as="textarea"
+            as="textarea"
             icon={
               focused["request"] ? (
                 <RequestIcon width={18} height={18} fill="black" />
@@ -138,21 +157,21 @@ const Form = () => {
           />
         </div>
         <div className="Row w-full flex lg:flex-row flex-col gap-3.5 justify-between items-center">
-          <MyCaptcha verified={state} setVerified={dispatch}/>
+          <MyCaptcha verified={state} setVerified={dispatch} />
           <Button
-          className="!w-full lg:w-max"
-          type="submit"
-          title="ارسال"
+            className="!w-full lg:w-max"
+            type="submit"
+            title="ارسال"
           />
         </div>
       </div>
-       {
+      {
         state.error && (
           <p className="text-red-500 flex w-[90%] mx-auto text-sm mt-1">
-                   لطفا ابتدا کپچا را انجام دهید
-                </p>
+            لطفا ابتدا کپچا را انجام دهید
+          </p>
         )
-       }
+      }
     </form>
   );
 };

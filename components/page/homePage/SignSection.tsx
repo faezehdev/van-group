@@ -9,7 +9,7 @@ const SignSection = ()=>{
                 <Image width={178} height={178} alt='' src='/images/Polygon.png' />
                 <Image width={178} height={178} className="translate-y-[2em]" alt='' src='/images/Polygon.png' />
               </div>
-              <div className="box w-90 mx-auto lg:w-full">
+              <div className="box w-90 mx-auto lg:w-full lg:text-center lg:max-w-[794px]">
                 <p>
                   ارزندگی، قطب نمای ما در ‌وان است و هر فعالیتی به سمت ارزش‌آفرینی و افزودن ارزشی به جهان امروز ؛ چرا که باور داریم: «فردا، فرزند امروز است.»
                 </p>

@@ -25,7 +25,7 @@ const InnerScrollSection = () => {
         <>
             <DivContainer as={'section'} className="DetailSec py-[3em] 
              lg:!w-auto lg:!max-w-[70%] w-full mx-auto flex bg-graylight  rounded-[40px]">
-                <div className="innerSec h-[976px] overflow-y-auto gap-4 w-full flex flex-col">
+                <div className="innerSec lg:h-[976px] lg:overflow-y-auto gap-4 w-full flex flex-col">
                     <Inner category="معرفی شرکت ها" title="ترابری">
                         <Cards cardsData={cardsData1} />
                     </Inner>

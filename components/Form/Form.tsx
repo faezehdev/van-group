@@ -162,8 +162,6 @@ const Form = () => {
             className="!w-full lg:!w-max"
             type="submit"
             title="ارسال"
-
-            
           />
         </div>
       </div>

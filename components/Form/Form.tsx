@@ -164,7 +164,6 @@ const Form = () => {
             title="ارسال"
           />
         </div>
-        
       </div>
       {
         state.error && (

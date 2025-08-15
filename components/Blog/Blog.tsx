@@ -16,7 +16,7 @@ const Blog: FC<BlogPropType> = ({ title, tags, description, date, img , variant 
     const [hovered, setHovered] = useState(false);
     if (variant == "two") return(
    <>
-            <div className="Blog group/blog  hover:cursor-pointer bg-graylight duration-200
+            <div className="Blog group/blog  hover:cursor-pointer bg-graylight duration-700
              hover:bg-black1 relative py-3.5 px-3 pr-5 flex justify-between rounded-3xl items-center"
                 onMouseEnter={() => setHovered(true)}
                 onMouseLeave={() => setHovered(false)}>
@@ -27,12 +27,12 @@ const Blog: FC<BlogPropType> = ({ title, tags, description, date, img , variant 
                    flex justify-center items-center bg-white rounded-[12px]">
                     <ArrowRightIcon fill="black" width={19} height={16} />
                 </span>
-                <div className="Detail relative z-10 gap-2.5 max-w-[320px] flex flex-col flex-wrap">
+                <div className="Detail relative z-10 gap-2.5 max-w-[320px] flex  flex-col flex-wrap">
                     <div className="Tags w-auto mb-3 max-w-full flex gap-2">
                         {tags?.length != 0 && (
                             tags?.map((tag) => (
                                 <span className="Tag w-max font-normal text-[10px] rounded-[10px]
-                                duration-200
+                                duration-700
                                 group-hover/blog:text-black
                                  text-black py-2 px-3 bg-white">
                                     {tag}
@@ -45,7 +45,7 @@ const Blog: FC<BlogPropType> = ({ title, tags, description, date, img , variant 
                     </div>
                     <div className="Desc w-auto flex flex-col gap-2">
                         <div className="title w-auto flex justify-start
-                         duration-200
+                         duration-700
                       text-black
                          items-center font-semibold text-lg group-hover/blog:text-white">
                             <p>
@@ -53,7 +53,7 @@ const Blog: FC<BlogPropType> = ({ title, tags, description, date, img , variant 
                             </p>
                         </div>
                         <div className="text w-auto flex justify-start items-center 
-                        duration-200
+                        duration-700
                       text-black
                         font-normal text-justify text-sm group-hover/blog:text-white">
                             <p>
@@ -74,7 +74,7 @@ const Blog: FC<BlogPropType> = ({ title, tags, description, date, img , variant 
                               
                                 </span>
                             <span className="Date font-normal text-[10px] rounded-[10px]
-                            duration-200
+                            duration-700
                      text-black
                              group-hover/blog:text-white">
                                 {date}
@@ -92,23 +92,23 @@ const Blog: FC<BlogPropType> = ({ title, tags, description, date, img , variant 
     if (variant == "three") return(
 <>
    <> 
-            <div className="Blog group/blog w-full hover:cursor-pointer bg-graylight duration-200
-             hover:bg-black1 relative py-3.5 px-3 pr-5 flex flex-col justify-between rounded-3xl items-center"
+            <div className="Blog group/blog w-full hover:cursor-pointer bg-graylight duration-700
+             hover:bg-black1 relative py-3.5 px-4  flex flex-col justify-between rounded-3xl items-center"
                 onMouseEnter={() => setHovered(true)}
                 onMouseLeave={() => setHovered(false)}>
-                  <span className={`OV ${hovered ? 'to-dark' : 'to-light '} absolute
+                  <span className={`OV ${hovered ? 'to-dark-b' : 'to-light-b '} absolute
                  w-full left-0 right-0 top-0 rounded-3xl h-full z-[1] `}></span>
                 <span className="icon ml-5 absolute z-[1] w-[40px] h-[40px] left-1
                   bottom-5
                    flex justify-center items-center bg-white rounded-[12px]">
                     <ArrowRightIcon fill="black" width={19} height={16} />
                 </span>
-                <div className="Detail relative z-10 gap-2.5 w-full flex justify-between items-center">
+                <div className="Detail relative z-10 gap-2.5 w-full flex justify-between items-start">
                     <div className="Tags w-auto max-w-[50%] mb-3  flex-wrap flex gap-2">
                         {tags?.length != 0 && (
                             tags?.map((tag) => (
                                 <span className="Tag w-max font-normal text-[10px] rounded-[10px]
-                                duration-200
+                                duration-700
                                 group-hover/blog:text-black
                                  text-black py-2 px-3 bg-white">
                                     {tag}
@@ -119,7 +119,7 @@ const Blog: FC<BlogPropType> = ({ title, tags, description, date, img , variant 
                         }
 
                     </div>
-                    <div className="Desc w-auto flex justify-center items-center flex-col gap-2">
+                    <div className="Desc mt-2 w-auto flex justify-center items-center flex-col gap-2">
                         <span className="Date-c justify-start items-center w-auto flex gap-2">
                                  {
                                     hovered ? (
@@ -131,7 +131,7 @@ const Blog: FC<BlogPropType> = ({ title, tags, description, date, img , variant 
                                 }
                                 
                             <span className="Date font-normal text-[10px] rounded-[10px]
-                            duration-200
+                            duration-700
                       text-black
                              group-hover/blog:text-white">
                                 {date}
@@ -140,7 +140,7 @@ const Blog: FC<BlogPropType> = ({ title, tags, description, date, img , variant 
                     </div>
                 </div>
                   <div className="title relative z-10 w-auto ml-auto flex justify-start
-                         duration-200
+                         duration-700
                       text-black
                          items-center font-semibold text-lg group-hover/blog:text-white">
                             <p>

@@ -1,5 +1,8 @@
-import { FC } from "react"
-
+"use client"
+import { FC, useEffect, useRef } from "react"
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 interface BigTitlePropType {
     children?: React.ReactNode
     signture?: string
@@ -12,8 +15,29 @@ const BigTitle: FC<BigTitlePropType> = ({
     category = "دسته‌بندی شرکت ها",
     className
 }) => {
+      const RightRef = useRef<HTMLDivElement>(null);
+   useEffect(() => {
+    if (RightRef.current) {
+      gsap.fromTo(
+        RightRef.current,
+        { x: 100, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: RightRef.current,
+            start: "top 90%", 
+            toggleActions: "play none none none", 
+          },
+        }
+      );
+   
+    }
+  }, []);
     return (
-        <div dir="rtl" className={`${className} Big_title w-auto justify-center items-start flex flex-col`}>
+        <div ref={RightRef} dir="rtl" className={`${className} Big_title w-auto justify-center items-start flex flex-col`}>
             <span className="signture w-auto flex font-bold text-xs text-black">
                 {signture}
             </span>

@@ -5,36 +5,109 @@ import Image from 'next/image'
 import BigTitle from "../../shared/common/BigTitle";
 import Blog from "../../Blog/Blog";
 import ArrowRightIcon from "../../shared/icon/ArrowRightIcon";
-
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef } from "react";
+gsap.registerPlugin(ScrollTrigger);
 const BlogSection = () => {
+  const leftRefs = useRef<HTMLDivElement[]>([]);
+  const rightRefs = useRef<HTMLDivElement[]>([]);
+  const bottomRefs = useRef<HTMLDivElement[]>([]);
+  useEffect(() => {
+    leftRefs.current.forEach((el) => {
+      gsap.fromTo(
+        el,
+        { x: -100, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1.5,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    });
+
+    rightRefs.current.forEach((el) => {
+      gsap.fromTo(
+        el,
+        { x: 100, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1.5,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    });
+
+    bottomRefs.current.forEach((el) => {
+      gsap.fromTo(
+        el,
+        { y: 100, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.5,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    });
+  }, []);
+
+
+  const addToLeftRefs = (el: HTMLDivElement) => {
+    if (el && !leftRefs.current.includes(el)) leftRefs.current.push(el);
+  };
+  const addToRightRefs = (el: HTMLDivElement) => {
+    if (el && !rightRefs.current.includes(el)) rightRefs.current.push(el);
+  };
+  const addToBottomRefs = (el: HTMLDivElement) => {
+    if (el && !bottomRefs.current.includes(el)) bottomRefs.current.push(el);
+  };
+
     const blogs = [
         {
-            title: "عنوان بلاگ اول",
-            description: "توضیح کوتاه درباره بلاگ اول...",
+            title: "  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ",
+            description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه...",
             date: "24 فروردین 1404",
             tags: ["گردشگری"],
             img: "/images/blog.png",
             imgHorizontal: "/images/hori.png"
         },
         {
-            title: "عنوان بلاگ دوم",
-            description: "توضیح کوتاه درباره بلاگ دوم...",
+            title: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ ",
+            description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه...",
             date: "25 فروردین 1404",
             tags: ["فناوری"],
             img: "/images/blog.png",
             imgHorizontal: "/images/hori.png"
         },
         {
-            title: "عنوان بلاگ سوم",
-            description: "توضیح کوتاه درباره بلاگ سوم...",
+            title: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ  ",
+            description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه...",
             date: "26 فروردین 1404",
             tags: ["فناوری"],
             img: "/images/blog.png",
             imgHorizontal: "/images/hori.png"
         },
         {
-            title: "عنوان بلاگ چهارم",
-            description: "توضیح کوتاه درباره بلاگ چهارم...",
+            title: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ",
+            description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه...",
             date: "27 فروردین 1404",
             tags: ["فناوری"],
             img: "/images/blog.png",
@@ -51,7 +124,11 @@ const BlogSection = () => {
 
             <div className="lg:flex hidden flex-col lg:flex-row gap-4 mt-[2em] justify-center">
                 {blogs.slice(0, 2).map((blog, idx) => (
-                    <div key={idx} className="lg:w-[50%] w-full">
+                    <div
+                        key={idx}
+                           ref={idx === 0 ? addToRightRefs : addToLeftRefs}
+                        className="lg:w-[50%] w-full"
+                    >
                         <Blog
                             title={blog.title}
                             description={blog.description}
@@ -65,10 +142,14 @@ const BlogSection = () => {
                 ))}
             </div>
 
-            <div className="grid lg:grid-cols-3 grid-cols-1 gap-4 mt-8 w-full justify-center">
+
+            <div className="grid lg:grid-cols-3 grid-cols-1 gap-4 mt-4 w-full justify-center">
 
                 {blogs.slice(2, 4).map((blog, idx) => (
-                    <div key={idx} className="w-full">
+                    <div 
+                     key={idx}
+                       ref={idx === 0 ? addToRightRefs : addToBottomRefs}
+                     className="w-full">
                         <Blog
                             title={blog.title}
                             description={blog.description}
@@ -82,7 +163,7 @@ const BlogSection = () => {
                 ))}
 
 
-                <div className="flex group/btn flex-col items-center justify-center bg-graylight hover:bg-black1 p-9 gap-8
+                <div ref={addToLeftRefs} className="flex group/btn flex-col items-center justify-center bg-graylight hover:bg-black1 p-9 gap-8
                  rounded-3xl cursor-pointer duration-200">
 
                     <div className="det w-full flex justify-between items-center">
@@ -103,7 +184,7 @@ const BlogSection = () => {
                         alt="مشاهده اخبار بیشتر"
                         width={200}
                         height={150}
-                        className="w-full"
+                        className="w-full rounded-[10px]"
                     />
                 </div>
             </div>

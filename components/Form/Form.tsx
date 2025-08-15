@@ -39,7 +39,7 @@ const Form = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="w-full mx-auto flex flex-col bg-graylight p-6 rounded-[30px] shadow"
+      className="w-full mx-auto flex flex-col bg-graylight p-6 rounded-[30px]"
     >
       <div className="w-90 mx-auto gap-6 flex flex-col lg:mb-6">
         <div className="row w-full flex lg:flex-row flex-col gap-6 justify-between">

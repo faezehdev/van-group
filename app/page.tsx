@@ -28,7 +28,7 @@ export default function Home() {
       <AboutSection />
       <SignSection />
       <div className="cont w-full relative">
- <CategorySection {...categories} />
+        <CategorySection {...categories} />
       </div>
       <BlogSection />
       <DetailSection />

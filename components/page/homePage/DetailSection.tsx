@@ -52,7 +52,7 @@ const DetailSection = () => {
       <div ref={imageRef} className="lg:w-[10%] lg:min-w-[200px] xl:min-w-[300px]">
         <DetailImage />
       </div>
-      <div ref={textRef} className="lg:!w-auto lg:!max-w-[73%]">
+      <div ref={textRef} className="lg:!w-auto overflow-hidden lg:!max-w-[73%]">
         <InnerScrollSection />
       </div>
     </div>
